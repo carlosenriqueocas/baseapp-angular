@@ -20,6 +20,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'editor',
+        loadChildren: () =>
+          import('../modules/editor/editor.module').then(
+            (m) => m.EditorModule
+          ),
+      },
+      {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full',
