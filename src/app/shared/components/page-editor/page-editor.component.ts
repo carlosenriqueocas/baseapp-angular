@@ -1,5 +1,6 @@
 import { CdkDragDrop, CdkDragEnter, CdkDragExit, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { EditorComponent } from './components/editor/editor.component';
 import { Widget, WidgetType } from './models/widget.model';
 
 @Component({
@@ -10,10 +11,16 @@ import { Widget, WidgetType } from './models/widget.model';
 export class PageEditorComponent implements OnInit {
     container: Widget;
 
+    @ViewChild(EditorComponent) editor: EditorComponent;
+
     constructor() {
+        let fila = new Widget('Fila', WidgetType.row, 'Container', true);
+        fila.children.push(new Widget('Imagen', WidgetType.img, 'http://localhost:3000/user/download/1', true));
+
         this.container = new Widget('Container', WidgetType.div, 'Container', true);
         this.container.children.push(new Widget('Parrafo', WidgetType.p, 'HOLA MUNDO', false));
-        this.container.children.push(new Widget('Parrafo', WidgetType.p, 'HOLA MUNDO 2', true));
+        this.container.children.push(new Widget('Parrafo', WidgetType.p, 'HOLA MUNDO 2', false));
+        this.container.children.push(fila);
     }
 
     ngOnInit() { }
@@ -59,6 +66,10 @@ export class PageEditorComponent implements OnInit {
     private hasChild(parentItem: Widget, childItem: Widget): boolean {
         const hasChild = parentItem.children.some((item) => item.id === childItem.id);
         return hasChild ? true : parentItem.children.some((item) => this.hasChild(item, childItem));
+    }
+
+    public getHTML(): string {
+        return this.editor.getHTML();
     }
 
 }

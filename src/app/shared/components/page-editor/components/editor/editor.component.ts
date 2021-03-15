@@ -1,6 +1,9 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Widget } from '../../models/widget.model';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChildren } from '@angular/core';
+import { Widget, WidgetType } from '../../models/widget.model';
+import { WidgetFactory } from '../../factories/widget.factory';
+import { ImageWidgetFactory } from '../../factories/image.factory';
+import { WidgetUtil } from '../../utils/editor.util';
 
 @Component({
     selector: 'editor',
@@ -10,6 +13,7 @@ import { Widget } from '../../models/widget.model';
 
 export class EditorComponent implements OnInit {
     public listIdsWhereDrop: string[];
+    public factory: WidgetFactory;
 
     @Input() widget: Widget;
     @Input() parentWidget?: Widget;
@@ -17,14 +21,18 @@ export class EditorComponent implements OnInit {
         this.listIdsWhereDrop = ids;
     }
 
-    @Output() itemDrop: EventEmitter<CdkDragDrop<Widget>>
+    @Output() itemDrop: EventEmitter<CdkDragDrop<Widget>>;
+
+    @ViewChildren(EditorComponent) children: EditorComponent[];
 
     constructor() {
         this.listIdsWhereDrop = [];
         this.itemDrop = new EventEmitter();
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.factory = WidgetUtil.getFactory(this.widget);
+    }
 
     public get connectToIdsWhereCanDrop(): string[] {
         return this.listIdsWhereDrop.filter((id) => id !== this.widget.id);
@@ -42,5 +50,13 @@ export class EditorComponent implements OnInit {
 
     public onDragDrop(event: CdkDragDrop<Widget, Widget>): void {
         this.itemDrop.emit(event);
+    }
+
+    public addWidget(widget: Widget) {
+        this.widget.children.push(widget);
+    }
+
+    public getHTML(): string {
+        return WidgetUtil.getHTML(this.factory, this.widget, this.children);
     }
 }
