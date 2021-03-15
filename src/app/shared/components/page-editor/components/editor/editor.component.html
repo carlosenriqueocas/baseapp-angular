@@ -10,6 +10,13 @@
             </i>
         </div>
 
+        <div *ngIf="parentWidgetId" (click)="openSettings()">
+            <i class="material-icons">
+                settings
+            </i>
+        </div>
+
+
         <div *cdkDragPreview class="item-drag-preview">
             {{ widget.name }} con {{ widget.children.length }} hijos.
         </div>

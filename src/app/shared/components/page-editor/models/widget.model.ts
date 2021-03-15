@@ -1,7 +1,7 @@
 export class Widget {
 
     id: string;
-    idComponentPreDefinido: string;
+    idComponent: string;
     name: string;
     type: WidgetType;
     value: string;

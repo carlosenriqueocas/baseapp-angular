@@ -59,4 +59,8 @@ export class EditorComponent implements OnInit {
     public getHTML(): string {
         return WidgetUtil.getHTML(this.factory, this.widget, this.children);
     }
+
+    public openSettings() {
+        console.log("Open Editor");
+    }
 }
