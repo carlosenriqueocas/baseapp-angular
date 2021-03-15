@@ -13,7 +13,7 @@ export class PageEditorComponent implements OnInit {
     constructor() {
         this.container = new Widget('Container', WidgetType.div, 'Container', true);
         this.container.children.push(new Widget('Parrafo', WidgetType.p, 'HOLA MUNDO', false));
-        this.container.children.push(new Widget('Parrafo', WidgetType.p, 'HOLA MUNDO 2', false));
+        this.container.children.push(new Widget('Parrafo', WidgetType.p, 'HOLA MUNDO 2', true));
     }
 
     ngOnInit() { }

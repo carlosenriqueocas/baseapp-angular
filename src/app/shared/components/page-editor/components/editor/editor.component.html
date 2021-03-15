@@ -16,8 +16,9 @@
 
     </div>
 
-    <ul cdkDropList class="item-dropzone" [id]="widget.id" [cdkDropListConnectedTo]="connectToIdsWhereCanDrop"
-        [cdkDropListData]="widget" (cdkDropListDropped)="onDragDrop($event)">
+    <ul cdkDropList [hidden]="!widget.canHasChildren" class="item-dropzone" [id]="widget.id"
+        [cdkDropListConnectedTo]="connectToIdsWhereCanDrop" [cdkDropListData]="widget"
+        (cdkDropListDropped)="onDragDrop($event)">
 
         <li *ngFor="let child of widget.children">
 
