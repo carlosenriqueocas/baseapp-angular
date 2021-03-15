@@ -1,0 +1,31 @@
+<div cdkDropList class="item-dropzone parent" [id]="parentWidgetId" [cdkDropListData]="parentWidget"
+    [cdkDropListConnectedTo]="listIdsWhereDrop" (cdkDropListDropped)="onDragDrop($event)">
+
+    <div cdkDrag [id]="widget.id" [cdkDragData]="widget" [cdkDragDisabled]="!hasParentWidget">
+
+        <div cdkDragHandle title="Arrastra este widget" class="item-drag-handle">
+            {{ widget.name }}
+            <i *ngIf="hasParentWidget" class="material-icons">
+                drag_indicator
+            </i>
+        </div>
+
+        <div *cdkDragPreview class="item-drag-preview">
+            {{ widget.name }} con {{ widget.children.length }} hijos.
+        </div>
+
+    </div>
+
+    <ul cdkDropList class="item-dropzone" [id]="widget.id" [cdkDropListConnectedTo]="connectToIdsWhereCanDrop"
+        [cdkDropListData]="widget" (cdkDropListDropped)="onDragDrop($event)">
+
+        <li *ngFor="let child of widget.children">
+
+            <editor [widget]="child" [parentWidget]="widget" [connectListIdsWhereDrop]="listIdsWhereDrop"
+                (itemDrop)="onDragDrop($event)"></editor>
+
+        </li>
+
+    </ul>
+
+</div>
