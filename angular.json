@@ -21,7 +21,8 @@
             "showCircularDependencies": false,
             "allowedCommonJsDependencies": [
               "object-path",
-              "apexcharts"
+              "apexcharts",
+              "grapesjs-preset-webpage"
             ],
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -33,10 +34,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/grapesjs/dist/css/grapes.min.css"
             ],
             "scripts": [
-              "node_modules/apexcharts/dist/apexcharts.min.js"
+              "node_modules/apexcharts/dist/apexcharts.min.js",
+              "node_modules/grapesjs/dist/grapes.min.js",
+              "node_modules/grapesjs-preset-webpage/dist/grapesjs-preset-webpage.min.js"
             ]
           },
           "configurations": {
