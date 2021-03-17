@@ -20,7 +20,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'editor',
+        path: 'builder',
         loadChildren: () =>
           import('../modules/editor/editor.module').then(
             (m) => m.EditorModule
@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/dashboard',
+        redirectTo: '/builder',
         pathMatch: 'full',
       },
       {
