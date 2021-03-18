@@ -8,11 +8,6 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('../modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
-      },
-      {
         path: 'user-profile',
         loadChildren: () =>
           import('../modules/user-profile/user-profile.module').then(
@@ -21,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/dashboard',
+        redirectTo: '/user-profile',
         pathMatch: 'full',
       },
       {
