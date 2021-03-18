@@ -239,11 +239,13 @@ export class LayoutInitService {
   private initSkins() {
     const headerSelfTheme = this.layout.getProp('header.self.theme') || '';
     const brandSelfTheme = this.layout.getProp('brand.self.theme') || '';
+    const asideSelfTheme = this.layout.getProp('aside.self.theme');
     const asideSelfDisplay = this.layout.getProp('aside.self.display');
     if (asideSelfDisplay === false) {
       document.body.classList.add(`brand-${headerSelfTheme}`);
     } else {
       document.body.classList.add(`brand-${brandSelfTheme}`);
     }
+    document.body.classList.add(`aside-${asideSelfTheme}`);
   }
 }
