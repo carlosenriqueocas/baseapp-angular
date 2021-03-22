@@ -14,10 +14,13 @@ export const routes: Routes = [
       import('./shared/components/errors/errors.module').then((m) => m.ErrorsModule),
   },
   {
-    path: '',
+    path: 'admin',
     canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./base/layout.module').then((m) => m.LayoutModule),
+    loadChildren: () => import('./base/layout.module').then((m) => m.LayoutModule),
+  },
+  {
+    path: '',
+    loadChildren: () => import('./modules/extranet/extranet.module').then((m) => m.ExtranetModule),
   },
   { path: '**', redirectTo: 'error/404' },
 ];

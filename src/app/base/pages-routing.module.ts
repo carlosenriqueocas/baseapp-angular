@@ -8,16 +8,8 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: 'user-profile',
-        loadChildren: () =>
-          import('../modules/user-profile/user-profile.module').then(
-            (m) => m.UserProfileModule
-          ),
-      },
-      {
         path: '',
-        redirectTo: '/user-profile',
-        pathMatch: 'full',
+        loadChildren: () => import('../modules/intranet/intranet.module').then((m) => m.IntranetModule),
       },
       {
         path: '**',
