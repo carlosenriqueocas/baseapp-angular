@@ -84,8 +84,8 @@ export const DefaultLayoutConfig = {
 
     menu: {
       self: {
-        display: true,
-        static: true, // static => true | dynamic => true
+        display: false,
+        static: false, // static => true | dynamic => true
         layout: 'default', // tab/default,
         rootArrow: false,
         iconStyle: 'duotone', // duotone, line, bold, solid
@@ -102,7 +102,7 @@ export const DefaultLayoutConfig = {
 
       mobile: {
         submenu: {
-          theme: 'dark',
+          theme: 'light',
           accordion: true,
         },
       },
@@ -111,7 +111,7 @@ export const DefaultLayoutConfig = {
 
   // Subheader
   subheader: {
-    display: true,
+    display: false,
     displayDesc: true,
     displayDaterangepicker: true,
     layoutVersion: 'v1', // [1..6]
@@ -153,7 +153,7 @@ export const DefaultLayoutConfig = {
     },
 
     menu: {
-      static: true, // static => true | dynamic => true
+      static: false, // static => true | dynamic => true
       dropdown: false, // ok
       scroll: true, // ok
       iconStyle: 'duotone', // duotone, line, bold, solid
