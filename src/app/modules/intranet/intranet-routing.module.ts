@@ -11,6 +11,10 @@ const routes: Routes = [
                 component: HomeAdminComponent,
             },
             {
+                path: 'security',
+                loadChildren: () => import('./security/security.module').then((m) => m.SecurityModule)
+            },
+            {
                 path: '',
                 redirectTo: '/admin/home',
                 pathMatch: 'full',

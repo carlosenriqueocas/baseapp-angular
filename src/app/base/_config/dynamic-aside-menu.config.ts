@@ -4,7 +4,7 @@ export const DynamicAsideMenuConfig = {
       title: 'Inicio',
       root: true,
       svg: './assets/media/svg/icons/Home/Home.svg',
-      page: '/admin',
+      page: '/admin/home',
     },
 
     /* Maestros */
