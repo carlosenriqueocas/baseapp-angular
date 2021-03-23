@@ -14,29 +14,12 @@ const routes: Routes = [
     component: ErrorsComponent,
     children: [
       {
-        path: 'error-1',
-        component: Error1Component,
-      },
-      {
-        path: 'error-2',
-        component: Error2Component,
-      },
-      {
-        path: 'error-3',
-        component: Error3Component,
-      },
-      {
-        path: 'error-4',
-        component: Error4Component,
-      },
-      {
-        path: 'error-5',
+        path: '',
         component: Error5Component,
       },
-      { path: '', redirectTo: 'error-1', pathMatch: 'full' },
       {
         path: '**',
-        component: Error1Component,
+        component: Error5Component,
         pathMatch: 'full',
       },
     ],
@@ -47,4 +30,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ErrorsRoutingModule {}
+export class ErrorsRoutingModule { }
