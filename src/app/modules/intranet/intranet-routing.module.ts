@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from '../extranet/home/home.component';
+import { HomeAdminComponent } from './home/home.component';
 
 const routes: Routes = [
     {
@@ -8,7 +8,7 @@ const routes: Routes = [
         children: [
             {
                 path: 'home',
-                component: HomeComponent,
+                component: HomeAdminComponent,
             },
             {
                 path: '',
