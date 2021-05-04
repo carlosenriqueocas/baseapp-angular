@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LayoutService, SubheaderService } from '../../../../services/root';
-import { BreadcrumbItemModel } from '../../../../models/subheader/breadcrumb-item.model';
+import { BreadcrumbItemModel } from '../../../../models/base/subheader/breadcrumb-item.model';
 
 @Component({
   selector: 'app-subheader5',

@@ -6,7 +6,6 @@ import {
   NgbDropdownModule,
   NgbProgressbarModule,
 } from '@ng-bootstrap/ng-bootstrap';
-import { TranslationModule } from '../shared/core/i18n/translation.module';
 import { LayoutComponent } from './_layout/layout.component';
 import { ScriptsInitComponent } from './_layout/init/scipts-init/scripts-init.component';
 import { HeaderMobileComponent } from './_layout/components/header-mobile/header-mobile.component';
@@ -16,7 +15,6 @@ import { HeaderComponent } from './_layout/components/header/header.component';
 import { HeaderMenuComponent } from './_layout/components/header/header-menu/header-menu.component';
 import { TopbarComponent } from './_layout/components/topbar/topbar.component';
 import { ExtrasModule } from '../shared/components/base/extras/extras.module';
-import { LanguageSelectorComponent } from './_layout/components/topbar/language-selector/language-selector.component';
 import { CoreModule } from '../shared/core/core.module';
 import { SubheaderModule } from '../shared/components/base/subheader/subheader.module';
 import { AsideDynamicComponent } from './_layout/components/aside-dynamic/aside-dynamic.component';
@@ -32,14 +30,12 @@ import { HeaderMenuDynamicComponent } from './_layout/components/header/header-m
     HeaderComponent,
     HeaderMenuComponent,
     TopbarComponent,
-    LanguageSelectorComponent,
     AsideDynamicComponent,
     HeaderMenuDynamicComponent,
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
-    TranslationModule,
     InlineSVGModule,
     ExtrasModule,
     NgbDropdownModule,

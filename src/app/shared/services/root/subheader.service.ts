@@ -1,8 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { BreadcrumbItemModel } from '../../models/subheader/breadcrumb-item.model';
+import { BreadcrumbItemModel } from '../../models/base/subheader/breadcrumb-item.model';
 import { LayoutService } from '../../../shared/services/root';
-import { SubheaderModel } from '../../models/subheader/subheader.model';
+import { SubheaderModel } from '../../models/base/subheader/subheader.model';
 
 // kt_header_menu
 // kt_aside_menu

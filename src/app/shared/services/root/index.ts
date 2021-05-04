@@ -5,7 +5,6 @@ export { DynamicAsideMenuService } from './dynamic-aside-menu.service';
 export { DynamicHeaderMenuService } from './dynamic-header-menu.service';
 export { SplashScreenService } from './splash-screen.service';
 export { SubheaderService } from './subheader.service';
-export { TranslationService } from './translation.service'
 // // Utils
 // export * from './utils/types-convertion.utils';
 // export * from './utils/date-picker.utils';
