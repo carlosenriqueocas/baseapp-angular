@@ -8,7 +8,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthComponent } from './auth.component';
-import { TranslationModule } from '../../shared/i18n/translation.module';
+import { TranslationModule } from '../../shared/core/i18n/translation.module';
 
 @NgModule({
   declarations: [

@@ -6,12 +6,12 @@ import {
 } from '@angular/core';
 import { TranslationService } from './shared/services/root';
 // language list
-import { locale as enLang } from './shared/i18n/vocabs/en';
-import { locale as chLang } from './shared/i18n/vocabs/ch';
-import { locale as esLang } from './shared/i18n/vocabs/es';
-import { locale as jpLang } from './shared/i18n/vocabs/jp';
-import { locale as deLang } from './shared/i18n/vocabs/de';
-import { locale as frLang } from './shared/i18n/vocabs/fr';
+import { locale as enLang } from './shared/core/i18n/vocabs/en';
+import { locale as chLang } from './shared/core/i18n/vocabs/ch';
+import { locale as esLang } from './shared/core/i18n/vocabs/es';
+import { locale as jpLang } from './shared/core/i18n/vocabs/jp';
+import { locale as deLang } from './shared/core/i18n/vocabs/de';
+import { locale as frLang } from './shared/core/i18n/vocabs/fr';
 import { SplashScreenService } from '../app/shared/services/root';
 import { Router, NavigationEnd, NavigationError } from '@angular/router';
 import { Subscription } from 'rxjs';
