@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 // Routing
 import { SecurityRoutingModule } from './security-routing.module';
 
@@ -10,11 +12,14 @@ import { UsersService } from './services/users.service';
 
 // Shared
 import { CoreModule } from '../../../shared/core/core.module';
+import { ComponentsModule } from '../../../shared/components/components.module';
 
 @NgModule({
     imports: [
         SecurityRoutingModule,
-        CoreModule
+        CommonModule,
+        CoreModule,
+        ComponentsModule
     ],
     declarations: [SecurityUsersComponent],
     providers: [UsersService]
