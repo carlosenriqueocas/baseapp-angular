@@ -1,10 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700");
+//@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700");
+
+@font-face {
+  font-family: "gotham-light";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./assets/fonts/gotham_rounded_light.ttf");
+}
+@font-face {
+  font-family: "gotham-medium";
+  src: url("./assets/fonts/gotham_rounded_medium.ttf");
+}
+@font-face {
+  font-family: "gotham-bold";
+  src: url("./assets/fonts/gotham_rounded_bold.ttf");
+}
+@font-face {
+  font-family: "gotham-book";
+  src: url("./assets/fonts/gotham_rounded_book.ttf");
+}
+
 // Global vendors
 @import "~bootstrap/dist/css/bootstrap.css";
 // => Material
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/cdk/overlay-prebuilt.css";
 
 @import "~perfect-scrollbar/css/perfect-scrollbar.css";
 
@@ -62,6 +83,9 @@
   @import "./assets/sass/themes/layout/aside/light.scss";
 }
 
+* {
+  font-family: "gotham-light";
+}
 // hide bootstrap dropdown arrow globally
 .dropdown-toggle::after {
   display: none !important;
@@ -102,3 +126,5 @@
   height: 3px;
   width: 100%;
 }
+
+@import "./assets/sass/custom.scss";
