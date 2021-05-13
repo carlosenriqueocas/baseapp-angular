@@ -1,4 +1,4 @@
-//import { IsRemovable, DeletePropertiesForApi } from '../../../../shared/core/decorators/test.decorator';
+import { IsRemovable, DeletePropertiesForApi } from '@shared_core/decorators/delete-for-api.decorator';
 
 export class FeatureModel {
 
@@ -8,7 +8,7 @@ export class FeatureModel {
     Path: string;
     Status: number;
 
-    //@IsRemovable()
+    @IsRemovable()
     private _iconFile: string | File;
 
     get iconFile(): string | File { return this._iconFile || this.Path };
@@ -28,7 +28,7 @@ export class FeatureModel {
         this.Status = options?.Status || 0;
     }
 
-    //@DeletePropertiesForApi()
+    @DeletePropertiesForApi()
     deletePrivatesAttributes() {
         delete this._iconFile;
     }

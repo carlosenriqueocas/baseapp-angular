@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SecurityUsersComponent } from './views/users/index/users.component';
+import { SecurityUsersComponent } from './views/users/index/index.component';
 
 @NgModule({
     imports: [

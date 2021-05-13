@@ -1,10 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IntranetContentWithTableComponent } from '../../../../../../shared/components/content-with-table/content-with-table.component';
+import { take } from 'rxjs/operators';
+
+import { IntranetContentWithTableComponent } from '@shared_components/content-with-table/content-with-table.component';
+import { ToolService } from '@shared_core/services/core.service';
+
 import { FeatureModel } from '../../../models/feature.model';
+import { FeatureEditComponent } from '../edit/edit.component';
 
 @Component({
     selector: 'intranet-security-users',
-    templateUrl: './users.component.html'
+    templateUrl: './index.component.html'
 })
 
 export class SecurityUsersComponent implements OnInit {
@@ -19,7 +24,9 @@ export class SecurityUsersComponent implements OnInit {
     @ViewChild(IntranetContentWithTableComponent, { static: true }) content: IntranetContentWithTableComponent<FeatureModel>;
 
 
-    constructor() { }
+    constructor(
+        private toolsService: ToolService,
+    ) { }
 
     ngOnInit() {
 
@@ -30,7 +37,10 @@ export class SecurityUsersComponent implements OnInit {
     }
 
     create() {
-
+        let refDialog = this.toolsService.dialog.open(FeatureEditComponent, { data: null });
+        refDialog.afterClosed().pipe(take(1)).subscribe(async response => {
+            if (response) await this.list();
+        });
     }
 
     edit(item: FeatureModel) {

@@ -11,7 +11,8 @@ export const routes: Routes = [
   {
     path: 'error',
     loadChildren: () =>
-      import('./shared/components/base/errors/errors.module').then((m) => m.ErrorsModule),
+      //import('./shared/components/base/errors/errors.module').then((m) => m.ErrorsModule),
+      import('@shared_components/base/errors/errors.module').then((m) => m.ErrorsModule),
   },
   {
     path: 'admin',

@@ -5,14 +5,16 @@ import { CommonModule } from '@angular/common';
 import { SecurityRoutingModule } from './security-routing.module';
 
 //Components
-import { SecurityUsersComponent } from './views/users/index/users.component';
+import { SecurityUsersComponent } from './views/users/index/index.component';
+import { FeatureEditComponent } from './views/users/edit/edit.component';
 
 //Services
 import { UsersService } from './services/users.service';
 
 // Shared
-import { CoreModule } from '../../../shared/core/core.module';
-import { ComponentsModule } from '../../../shared/components/components.module';
+import { CoreModule } from '@shared_core/core.module';
+import { ComponentsModule } from '@shared_components/components.module';
+
 
 @NgModule({
     imports: [
@@ -21,7 +23,10 @@ import { ComponentsModule } from '../../../shared/components/components.module';
         CoreModule,
         ComponentsModule
     ],
-    declarations: [SecurityUsersComponent],
+    declarations: [
+        SecurityUsersComponent,
+        FeatureEditComponent
+    ],
     providers: [UsersService]
 })
 export class SecurityModule { }

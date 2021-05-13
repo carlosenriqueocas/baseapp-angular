@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { AuthService } from './modules/auth/_services/auth.service';
 import { environment } from 'src/environments/environment';
 
-import { SplashScreenModule } from '../app/shared/components/base/splash-screen/splash-screen.module';
+import { SplashScreenModule } from '@shared_components/base/splash-screen/splash-screen.module';
 // #fake-start#
 import { FakeAPIService } from './_fake/fake-api.service';
 // #fake-end#

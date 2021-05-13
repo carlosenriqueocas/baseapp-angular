@@ -1,7 +1,4 @@
-/*
-
 import "reflect-metadata";
-import { buildTreeLevel2 } from "@shared_utils/index";
 
 const DELETE_KEY = 'delete';
 const SELF_DELETE_KEY = 'self';
@@ -62,7 +59,6 @@ function savePropertyName(target: any, property: string) {
     complexFields.push(property);
 }
 
-*/
 /*
     npm install "reflect-metadata": "^0.1.13",
 

@@ -13,7 +13,7 @@ export const DefaultLayoutConfig = {
       theme: {
         base: {
           white: '#ffffff',
-          primary: '#3699FF',
+          primary: '#F28330',
           secondary: '#E5EAEE',
           success: '#1BC5BD',
           info: '#8950FC',
@@ -24,7 +24,7 @@ export const DefaultLayoutConfig = {
         },
         light: {
           white: '#ffffff',
-          primary: '#E1F0FF',
+          primary: '#F28330',
           secondary: '#EBEDF3',
           success: '#C9F7F5',
           info: '#EEE5FF',
@@ -57,7 +57,7 @@ export const DefaultLayoutConfig = {
         'gray-900': '#181C32',
       },
     },
-    fontFamily: 'Poppins',
+    fontFamily: 'gotham_light',
   },
 
   // Base Settins
@@ -123,7 +123,7 @@ export const DefaultLayoutConfig = {
 
   // Content
   content: {
-    width: 'fixed', // fluid|fixed
+    width: 'fluid', // fluid|fixed
   },
 
   // Brand
