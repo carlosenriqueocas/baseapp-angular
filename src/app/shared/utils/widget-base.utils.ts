@@ -3,9 +3,13 @@ import { Component } from '@angular/core';
 @Component({
     template: ''
 })
-export abstract class WidgetBaseComponent<T> {
+export abstract class WidgetBaseComponent {
 
-    abstract setData(data: T): T;
+    title = 'Default';
+    description = 'Default';
+    icon = 'check';
 
-    abstract getData(): Promise<T>;
+    // abstract setData(data: T): T;
+
+    // abstract getData(): Promise<T>;
 }
