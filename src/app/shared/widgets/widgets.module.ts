@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { forwardRef, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { OverlayModule } from "@angular/cdk/overlay";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -12,7 +12,7 @@ import { WidgetSelectGroupComponent } from './select-group/select-group.componen
 import { WidgetSelectWithPromiseComponent } from './select-promise/select-with-promise.component';
 import { WidgetSelectTreeComponent } from './select-tree/select-tree.component';
 import { WidgetSvgIconComponent } from './svg-icon/svg-icon.component';
-import { SelectPromiseWithTemplateModule } from './select-promise-with-template/select-promise-with-template.module';
+import { WidgetInputText } from './input-text/input-text.component';
 
 @NgModule({
   imports: [
@@ -21,8 +21,6 @@ import { SelectPromiseWithTemplateModule } from './select-promise-with-template/
     MatProgressSpinnerModule,
     FormsModule,
     OverlayModule,
-
-    SelectPromiseWithTemplateModule
   ],
   declarations: [
     WidgetImgS3Component,
@@ -30,7 +28,9 @@ import { SelectPromiseWithTemplateModule } from './select-promise-with-template/
     WidgetSelectGroupComponent,
     WidgetSelectWithPromiseComponent,
     WidgetSelectTreeComponent,
-    WidgetSvgIconComponent
+    WidgetSvgIconComponent,
+
+    WidgetInputText
   ],
   exports: [
     WidgetImgS3Component,
@@ -40,7 +40,14 @@ import { SelectPromiseWithTemplateModule } from './select-promise-with-template/
     WidgetSelectTreeComponent,
     WidgetSvgIconComponent,
 
-    SelectPromiseWithTemplateModule
+    WidgetInputText
   ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => WidgetInputText),
+      multi: true
+    }
+  ]
 })
 export class WidgetsModule { }

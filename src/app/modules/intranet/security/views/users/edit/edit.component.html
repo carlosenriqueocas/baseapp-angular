@@ -4,38 +4,18 @@
     <ng-container dialogForm>
         <div class="row">
             <div class="col-lg-6">
-                <div class="form-group">
-                    <label>Nombre:</label>
-                    <input input-safe name="name" [(ngModel)]="obj.Name">
-                </div>
+
+                <widget-input-text label="Nombre" name="name" [(ngModel)]="obj.Name">
+                </widget-input-text>
+
+                <widget-input-text label="Descripción" name="description" [(ngModel)]="obj.Description">
+                </widget-input-text>
 
                 <!-- <div class="form-group">
                     <label>Descripción:</label>
                     <textarea input-safe [validators]="['max-500']" name="description" [(ngModel)]="obj.Description"
                         rows="5"></textarea>
                 </div> -->
-
-                <widget-select-promise></widget-select-promise>
-
-                <widget-select-promise [title]="'Holaaaaaaaaaaa'">
-
-                    <ng-container *appCounterValue="let value">
-                        <span class="mr-2">Current value: {{value}}</span>
-                        <i class="fa fa-arrow-left"></i>
-                    </ng-container>
-
-                    <ng-container *appCounterIncBtn="let increment">
-                        <button class="btn btn-success" (click)="increment()">
-                            inc <i class="fa fa-arrow-up"></i>
-                        </button>
-                    </ng-container>
-
-                    <ng-container *appCounterDecBtn="let decrement">
-                        <button class="btn btn-danger" (click)="decrement()">
-                            dec <i class="fa fa-arrow-down"></i>
-                        </button>
-                    </ng-container>
-                </widget-select-promise>
 
             </div>
             <div class="col-lg-6">

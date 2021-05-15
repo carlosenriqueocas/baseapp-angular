@@ -2,6 +2,26 @@ import { AbstractControl, NgModel, ValidatorFn, Validators } from '@angular/form
 
 export class CustomValidators {
 
+    private static defaultValidators: string[] = ['min-2', 'max-100'];
+
+    static createListValidators(isRequired: boolean, validations: string[]): any[] {
+        let _validators = [];
+
+        if (isRequired) _validators.push(Validators.required);
+
+        (validations.length > 0 ? validations : this.defaultValidators).forEach(v => {
+            if (v.indexOf('min-') != -1) _validators.push(Validators.minLength(parseInt(v.split('-')[1])));
+            if (v.indexOf('max-') != -1) {
+                _validators.push(Validators.maxLength(parseInt(v.split('-')[1])));
+                //(<HTMLElement>this.el.nativeElement).setAttribute('maxlength', String(parseInt(v.split('-')[1])));
+            };
+            if (v == 'email') _validators.push(Validators.email);
+            if (v == 'decimal') _validators.push(CustomValidators.isDecimalValidator);
+            if (v == 'password-secure') _validators.push(CustomValidators.isPasswordSecureValidator);
+        });
+        return _validators;
+    }
+
     static get isDecimalValidator(): ValidatorFn {
         return (control: AbstractControl): { [key: string]: any } | null => {
             let value = String(control.value);

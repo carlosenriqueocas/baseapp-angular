@@ -8,7 +8,7 @@
 </select> -->
 
 <div (click)="openOptions(!isOpen)" class="input.group input-icon input-icon-right" [hidden]="loading">
-    <input #input input-safe readonly [validators]="[(isRequired)? 'required': 'no-required']" [asterisk]="false"
+    <input #input input-safe readonly [validations]="[(isRequired)? 'required': 'no-required']" [asterisk]="false"
         [name]="idControl" [placeholder]="textNinguno" [disabled]="!editable" [(ngModel)]="nameSelect" cdkOverlayOrigin
         #trigger="cdkOverlayOrigin" class="form-control cursor-pointer" type="text" autocomplete="off">
     <span>

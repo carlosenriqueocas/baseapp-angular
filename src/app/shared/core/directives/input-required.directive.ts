@@ -15,12 +15,11 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
 
     //'required' | 'min-x' | 'max-x' | 'email'    
     @Input() required: boolean = true;
-    @Input() validators: string[] = [];
+    @Input() validations: string[] = [];
     @Input() asterisk: boolean = true;
     @Input() sanitizer: boolean = true;
     @Input() skipUnsafeCharacters: string[] = [];
 
-    private defaultValidators: string[] = ['min-2', 'max-100'];
     private unsafeCharacters: Map<string, RegExp> = new Map();
 
     constructor(
@@ -47,8 +46,7 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
         this.createDivErrors();
         this.createDivCounter();
 
-        if ((this.validators.length > 0 ? this.validators : this.defaultValidators).includes('required'))
-            this.addAsterisk();
+        if (this.required) this.addAsterisk();
 
         this.skipUnsafeCharacters?.forEach(c => this.unsafeCharacters.delete(c));
     }
@@ -70,26 +68,11 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
     }
 
     private initValidators() {
-        let _validators = [];
-
-        if (this.required) _validators.push(Validators.required);
-
-        (this.validators.length > 0 ? this.validators : this.defaultValidators).forEach(v => {
-            if (v.indexOf('min-') != -1) _validators.push(Validators.minLength(parseInt(v.split('-')[1])));
-            if (v.indexOf('max-') != -1) {
-                _validators.push(Validators.maxLength(parseInt(v.split('-')[1])));
-                (<HTMLElement>this.el.nativeElement).setAttribute('maxlength', String(parseInt(v.split('-')[1])));
-            };
-            if (v == 'email') _validators.push(Validators.email);
-            if (v == 'decimal') _validators.push(CustomValidators.isDecimalValidator);
-            if (v == 'password-secure') _validators.push(CustomValidators.isPasswordSecureValidator);
-        });
+        this.ngModel.control.setValidators(CustomValidators.createListValidators(this.required, this.validations));
 
         (<HTMLElement>this.el.nativeElement).setAttribute('autocomplete', 'off');
         (<HTMLElement>this.el.nativeElement).setAttribute('type', 'text');
         (<HTMLElement>this.el.nativeElement).setAttribute('class', 'form-control');
-
-        this.ngModel.control.setValidators(_validators);
     }
 
     @HostBinding('class.is-invalid') get onTouch() {
