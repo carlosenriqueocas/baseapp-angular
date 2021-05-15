@@ -12,8 +12,18 @@ import { WidgetSelectGroupComponent } from './select-group/select-group.componen
 import { WidgetSelectWithPromiseComponent } from './select-promise/select-with-promise.component';
 import { WidgetSelectTreeComponent } from './select-tree/select-tree.component';
 import { WidgetSvgIconComponent } from './svg-icon/svg-icon.component';
+import { SelectPromiseWithTemplateModule } from './select-promise-with-template/select-promise-with-template.module';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    CoreModule,
+    MatProgressSpinnerModule,
+    FormsModule,
+    OverlayModule,
+
+    SelectPromiseWithTemplateModule
+  ],
   declarations: [
     WidgetImgS3Component,
     WidgetInputTypeFileComponent,
@@ -22,20 +32,15 @@ import { WidgetSvgIconComponent } from './svg-icon/svg-icon.component';
     WidgetSelectTreeComponent,
     WidgetSvgIconComponent
   ],
-  imports: [
-    CommonModule,
-    CoreModule,
-    MatProgressSpinnerModule,
-    FormsModule,
-    OverlayModule
-  ],
   exports: [
     WidgetImgS3Component,
     WidgetInputTypeFileComponent,
     WidgetSelectGroupComponent,
     WidgetSelectWithPromiseComponent,
     WidgetSelectTreeComponent,
-    WidgetSvgIconComponent
+    WidgetSvgIconComponent,
+
+    SelectPromiseWithTemplateModule
   ],
 })
 export class WidgetsModule { }
