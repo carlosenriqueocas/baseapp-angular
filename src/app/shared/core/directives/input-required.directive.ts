@@ -1,6 +1,7 @@
 import { Directive, ElementRef, Renderer2, OnInit, Input, OnDestroy, HostBinding, HostListener, AfterViewInit } from '@angular/core';
-import { AbstractControl, NgModel, ValidatorFn, Validators } from '@angular/forms';
+import { NgModel, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { CustomValidators } from './validators/ngmodel.validator';
 
 @Directive({ selector: '[input-safe]' })
 export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy {
@@ -9,15 +10,17 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
     superParent: HTMLElement;
     divErrors: any;
     subscription: Subscription;
+    mat_hint: any;
+    tagName: string;
 
     //'required' | 'min-x' | 'max-x' | 'email'    
+    @Input() required: boolean = true;
     @Input() validators: string[] = [];
-    @Input() validatorsOther: string[] = [];
     @Input() asterisk: boolean = true;
     @Input() sanitizer: boolean = true;
     @Input() skipUnsafeCharacters: string[] = [];
 
-    private defaultValidators: string[] = ['required', 'min-2', 'max-100'];
+    private defaultValidators: string[] = ['min-2', 'max-100'];
     private unsafeCharacters: Map<string, RegExp> = new Map();
 
     constructor(
@@ -42,8 +45,11 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
     ngAfterViewInit() {
         this.initValidators();
         this.createDivErrors();
+        this.createDivCounter();
 
-        if ((this.validators.length > 0 ? this.validators : this.defaultValidators).includes('required')) this.addAsterisk();
+        if ((this.validators.length > 0 ? this.validators : this.defaultValidators).includes('required'))
+            this.addAsterisk();
+
         this.skipUnsafeCharacters?.forEach(c => this.unsafeCharacters.delete(c));
     }
 
@@ -66,20 +72,22 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
     private initValidators() {
         let _validators = [];
 
+        if (this.required) _validators.push(Validators.required);
+
         (this.validators.length > 0 ? this.validators : this.defaultValidators).forEach(v => {
-            if (v == 'required') _validators.push(Validators.required);
             if (v.indexOf('min-') != -1) _validators.push(Validators.minLength(parseInt(v.split('-')[1])));
             if (v.indexOf('max-') != -1) {
                 _validators.push(Validators.maxLength(parseInt(v.split('-')[1])));
                 (<HTMLElement>this.el.nativeElement).setAttribute('maxlength', String(parseInt(v.split('-')[1])));
             };
+            if (v == 'email') _validators.push(Validators.email);
+            if (v == 'decimal') _validators.push(CustomValidators.isDecimalValidator);
+            if (v == 'password-secure') _validators.push(CustomValidators.isPasswordSecureValidator);
         });
 
-        this.validatorsOther.forEach(v => {
-            if (v == 'email') _validators.push(Validators.email);
-            if (v == 'decimal') _validators.push(this.isDecimal);
-            if (v == 'password-secure') _validators.push(this.isPasswordSecure);
-        });
+        (<HTMLElement>this.el.nativeElement).setAttribute('autocomplete', 'off');
+        (<HTMLElement>this.el.nativeElement).setAttribute('type', 'text');
+        (<HTMLElement>this.el.nativeElement).setAttribute('class', 'form-control');
 
         this.ngModel.control.setValidators(_validators);
     }
@@ -94,9 +102,9 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
     onEvent(target: HTMLElement) {
         this.ngModel.control.updateValueAndValidity();
 
-        if (this.ngModel.disabled) {
-            return;
-        }
+        this.showCounterCharacteres();
+
+        if (this.ngModel.disabled) return;
 
         if (this.ngModel.invalid) {
             this.render.addClass(target, 'is-invalid');
@@ -141,8 +149,15 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
         if (this.parent.classList.contains('input-group')) this.superParent = this.parent.parentElement;
     }
 
-    private addAsterisk() {
+    private showCounterCharacteres() {
+        if (this.tagName != 'TEXTAREA') return;
 
+        let currentLength = this.ngModel.value ? this.ngModel.value.length : 0;
+        let maxLength = (<HTMLElement>this.el.nativeElement).getAttribute('maxlength');
+        this.render.setProperty(this.mat_hint, 'innerHTML', `${currentLength} / ${maxLength}`);
+    }
+
+    private addAsterisk() {
         if (!this.asterisk) return;
 
         let labelChild: ChildNode;
@@ -178,38 +193,31 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
         }
     }
 
+    private createDivCounter() {
+        this.tagName = (<HTMLElement>this.el.nativeElement).tagName;
+        if (this.tagName != 'TEXTAREA') return;
+
+        this.render.addClass(this.el.nativeElement, 'txtHint');
+
+        this.mat_hint = this.render.createElement('mat-hint');
+        this.render.addClass(this.mat_hint, 'mat-hint');
+        this.render.addClass(this.mat_hint, 'label');
+        this.render.addClass(this.mat_hint, 'label-primary');
+        this.render.addClass(this.mat_hint, 'label-inline');
+        this.render.addClass(this.mat_hint, 'label-lg');
+        this.render.addClass(this.mat_hint, 'font');
+        this.render.addClass(this.mat_hint, 'font-weight-bold');
+
+        const div = this.render.createElement('div');
+        this.render.addClass(div, 'w-100');
+        this.render.addClass(div, 'text-center');
+        this.render.appendChild(div, this.mat_hint);
+
+        const parent = this.render.parentNode(this.el.nativeElement);
+        this.render.appendChild(parent, div);
+    }
+
     ngOnDestroy() {
         this.subscription?.unsubscribe();
-    }
-
-
-    private get isDecimal(): ValidatorFn {
-        return (control: AbstractControl): { [key: string]: any } | null => {
-            let value = String(control.value);
-            if (value == "0") return null;
-            else return /^\d{1,10}(\.\d{1,2})?$/.test(value) ? null : { decimal: true };
-            //else return /^\d{1,10}(\.\d{2})$/.test(value) ? null : { decimal: true };
-            //return /^\d{1,10}(\.\d{1,2})?$/.test(value) ? null : { decimal: true };
-        };
-    }
-
-    private get isPasswordSecure(): ValidatorFn {
-        return (control: AbstractControl): { [key: string]: any } | null => {
-            let value = String(control.value);
-            if (!value) return null;
-
-            let array = [];
-            array[0] = value.match(/[A-Z]/);
-            array[1] = value.match(/[a-z]/);
-            array[2] = value.match(/\d/);
-            array[3] = value.match(/[!"#$%&'()*+-./:;<=>?@^_`{|}~]/);
-
-            let sum = 0;
-            for (let i = 0; i < array.length; i++) {
-                sum += array[i] ? 1 : 0;
-            }
-
-            return sum < 4 ? { secure: true } : null;
-        }
     }
 }

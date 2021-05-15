@@ -6,14 +6,13 @@
             <div class="col-lg-6">
                 <div class="form-group">
                     <label>Nombre:</label>
-                    <input input-safe type="text" name="name" class="form-control" autocomplete="off"
-                        [(ngModel)]="obj.Name">
+                    <input input-safe name="name" [(ngModel)]="obj.Name">
                 </div>
 
                 <div class="form-group">
                     <label>Descripción:</label>
-                    <textarea input-safe [validators]="['no-required','max-500']" name="description"
-                        class="form-control" autocomplete="off" [(ngModel)]="obj.Description" rows=5></textarea>
+                    <textarea input-safe [validators]="['max-500']" name="description" [(ngModel)]="obj.Description"
+                        rows="5"></textarea>
                 </div>
 
             </div>
