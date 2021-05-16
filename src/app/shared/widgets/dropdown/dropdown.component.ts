@@ -32,7 +32,7 @@ export class WidgetDropdownComponent<T> implements ControlValueAccessor, OnInit,
     @Input() validations: string[] = [];
     @Input() label: string = 'label';
     @Input() name: string = 'name';
-    @Input() showNone: boolean = false;
+    @Input() showNone: boolean = true;
     @Input() textNone: string = 'Ninguno';
     @Input() editable: boolean = true;
     @Input() keyId: string = 'IdCatalog';
@@ -137,6 +137,10 @@ export class WidgetDropdownComponent<T> implements ControlValueAccessor, OnInit,
     writeValue(value: T) {
         this._value = value;
         this.text = this.getName(value);
+
+        if (value && !value[this.keyId]) {
+            this.onChange(null);
+        }
     }
 
     registerOnChange(fn: any) {
