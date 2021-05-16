@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { take } from 'rxjs/operators';
 
+import { BaseComponent } from '@shared_models/components/base-component.model';
 import { IntranetContentWithTableComponent } from '@shared_components/content-with-table/content-with-table.component';
 import { DefaultPropertiesComponent } from '@shared_core/decorators/default-values-component.decorator';
 import { ToolService } from '@shared_core/services/core.service';
-
-import { WidgetBaseComponent } from '@shared_utils/widget-base.utils';
 
 import { FeatureModel } from '../../../models/feature.model';
 import { FeatureEditComponent } from '../edit/edit.component';
@@ -20,7 +19,7 @@ import { FeatureEditComponent } from '../edit/edit.component';
     templateUrl: './index.component.html'
 })
 
-export class SecurityUsersComponent extends WidgetBaseComponent implements OnInit {
+export class SecurityUsersComponent extends BaseComponent implements OnInit {
     tableColumns = ['check', 'name', 'description', 'acciones'];
     filterColumns = ['Name', 'Description'];
 

@@ -5,7 +5,7 @@ import { IntranetDialogWithFormComponent } from '@shared_components/dialog-with-
 import { DefaultPropertiesComponent } from '@shared_core/decorators/default-values-component.decorator';
 import { ToolService } from '@shared_core/services/core.service';
 import { Constants } from '@shared_models/constants.model';
-import { WidgetBaseComponent } from '@shared_utils/index';
+import { BaseComponent } from '@shared_utils/index';
 import { WidgetDropdownComponent } from '@shared_widgets/dropdown/dropdown.component';
 
 import { FeatureModel } from '../../../models/feature.model';
@@ -20,7 +20,7 @@ import { FeatureModel } from '../../../models/feature.model';
     templateUrl: './edit.component.html'
 })
 
-export class FeatureEditComponent extends WidgetBaseComponent implements OnInit {
+export class FeatureEditComponent extends BaseComponent implements OnInit {
     obj: FeatureModel = new FeatureModel();
     objFeatureModel: FeatureModel = null;
 

@@ -2,7 +2,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { AfterContentInit, Component, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { TableWrapperUtil } from '../../utils/table-wrapper.utils';
+
+import { TableWrapperComponent } from '@shared_models/components/table-wrapper-component.model';
 
 import * as lodash from 'lodash';
 
@@ -11,7 +12,7 @@ import * as lodash from 'lodash';
     templateUrl: './table-with-drag-and-drop.component.html'
 })
 
-export class IntranetTableWithDragAndDropComponent<T> extends TableWrapperUtil implements OnInit, AfterContentInit {
+export class IntranetTableWithDragAndDropComponent<T> extends TableWrapperComponent implements OnInit, AfterContentInit {
 
     loading = false;
 

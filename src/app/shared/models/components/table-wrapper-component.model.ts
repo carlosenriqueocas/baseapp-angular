@@ -4,7 +4,7 @@ import { Component, ContentChild, ContentChildren, QueryList, ViewChild } from '
 @Component({
     template: ''
 })
-export abstract class TableWrapperUtil {
+export abstract class TableWrapperComponent {
 
     @ContentChildren(MatHeaderRowDef) headerRowDefs: QueryList<MatHeaderRowDef>;
     @ContentChildren(MatRowDef) rowDefs: QueryList<MatRowDef<any>>;

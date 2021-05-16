@@ -9,6 +9,9 @@
             <widget-svg-icon icon="angle-down" class="icon-select" [ngClass]="{'r180':isOpen}"></widget-svg-icon>
         </span>
     </div>
+    <div *ngIf="loading" class="input-icon input-icon-right">
+        <mat-spinner [diameter]="25"></mat-spinner>
+    </div>
 </div>
 
 <ng-template #options cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen"
@@ -48,5 +51,3 @@
 
     </div>
 </ng-template>
-
-<mat-spinner *ngIf="loading" [diameter]="25"></mat-spinner>

@@ -1,14 +1,14 @@
 import { Component, Input, OnInit, ViewChild, AfterContentInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { TableWrapperUtil } from '../../utils/table-wrapper.utils';
+import { TableWrapperComponent } from '@shared_models/components/table-wrapper-component.model';
 
 @Component({
     selector: 'table-with-paginator',
     templateUrl: './table-with-paginator.component.html'
 })
 
-export class IntranetTableWithPaginatorComponent<T> extends TableWrapperUtil implements OnInit, AfterContentInit {
+export class IntranetTableWithPaginatorComponent<T> extends TableWrapperComponent implements OnInit, AfterContentInit {
 
     loading = false;
 
