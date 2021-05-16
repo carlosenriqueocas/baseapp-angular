@@ -2,8 +2,9 @@
     <label>{{label}}</label>
     <div #containerInput (click)="openOptions(!isOpen)" class="input-icon input-icon-right" [hidden]="loading"
         #trigger="cdkOverlayOrigin" cdkOverlayOrigin>
-        <input #inputNgModel="ngModel" input-safe [required]="required" [validations]="validations" [name]="name"
-            [(ngModel)]="text" [placeholder]="textNone" [disabled]="!editable" readonly>
+        <input #inputNgModel="ngModel" class="cursor-pointer" input-safe [required]="required"
+            [validations]="validations" [name]="name" [(ngModel)]="text" [placeholder]="textNone" [disabled]="!editable"
+            readonly>
         <span>
             <widget-svg-icon icon="angle-down" class="icon-select" [ngClass]="{'r180':isOpen}"></widget-svg-icon>
         </span>

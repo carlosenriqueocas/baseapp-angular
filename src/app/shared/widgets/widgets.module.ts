@@ -12,8 +12,8 @@ import { WidgetSelectGroupComponent } from './select-group/select-group.componen
 import { WidgetSelectWithPromiseComponent } from './select-promise/select-with-promise.component';
 import { WidgetSelectTreeComponent } from './select-tree/select-tree.component';
 import { WidgetSvgIconComponent } from './svg-icon/svg-icon.component';
-import { WidgetInputText } from './input-text/input-text.component';
-import { WidgetDropdown } from './dropdown/dropdown.component';
+import { WidgetInputTextComponent } from './input-text/input-text.component';
+import { WidgetDropdownComponent } from './dropdown/dropdown.component';
 
 @NgModule({
   imports: [
@@ -27,33 +27,33 @@ import { WidgetDropdown } from './dropdown/dropdown.component';
     WidgetImgS3Component,
     WidgetInputTypeFileComponent,
     WidgetSelectGroupComponent,
-    //WidgetSelectWithPromiseComponent,
+    WidgetSelectWithPromiseComponent, // DELETE
     WidgetSelectTreeComponent,
     WidgetSvgIconComponent,
 
-    WidgetInputText,
-    WidgetDropdown
+    WidgetInputTextComponent,
+    WidgetDropdownComponent
   ],
   exports: [
     WidgetImgS3Component,
     WidgetInputTypeFileComponent,
     WidgetSelectGroupComponent,
-    //WidgetSelectWithPromiseComponent,
+    WidgetSelectWithPromiseComponent, //DELETE
     WidgetSelectTreeComponent,
     WidgetSvgIconComponent,
 
-    WidgetInputText,
-    WidgetDropdown
+    WidgetInputTextComponent,
+    WidgetDropdownComponent
   ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => WidgetInputText),
+      useExisting: forwardRef(() => WidgetInputTextComponent),
       multi: true
     },
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => WidgetDropdown),
+      useExisting: forwardRef(() => WidgetDropdownComponent),
       multi: true
     }
   ]

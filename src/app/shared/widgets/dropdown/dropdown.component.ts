@@ -13,7 +13,7 @@ import * as objectPath from 'object-path';
     templateUrl: './dropdown.component.html'
 })
 
-export class WidgetDropdown<T> implements ControlValueAccessor, OnInit, AfterViewChecked, DoCheck {
+export class WidgetDropdownComponent<T> implements ControlValueAccessor, OnInit, AfterViewChecked, DoCheck {
 
     _value: T = null;
 

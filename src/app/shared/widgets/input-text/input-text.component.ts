@@ -7,7 +7,7 @@ import { CustomValidators } from '@shared_core/directives/validators/ngmodel.val
     templateUrl: './input-text.component.html',
 })
 
-export class WidgetInputText implements ControlValueAccessor, OnInit, DoCheck {
+export class WidgetInputTextComponent implements ControlValueAccessor, OnInit, DoCheck {
 
     private _value: string = '';
 

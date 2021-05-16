@@ -1,10 +1,11 @@
 import { AbstractControl, NgModel, ValidatorFn, Validators } from '@angular/forms';
+import { ElementRef } from '@angular/core';
 
 export class CustomValidators {
 
     private static defaultValidators: string[] = ['min-2', 'max-100'];
 
-    static createListValidators(isRequired: boolean, validations: string[]): any[] {
+    static createListValidators(isRequired: boolean, validations: string[], el?: ElementRef): any[] {
         let _validators = [];
 
         if (isRequired) _validators.push(Validators.required);
@@ -13,7 +14,7 @@ export class CustomValidators {
             if (v.indexOf('min-') != -1) _validators.push(Validators.minLength(parseInt(v.split('-')[1])));
             if (v.indexOf('max-') != -1) {
                 _validators.push(Validators.maxLength(parseInt(v.split('-')[1])));
-                //(<HTMLElement>this.el.nativeElement).setAttribute('maxlength', String(parseInt(v.split('-')[1])));
+                if (el) (<HTMLElement>el.nativeElement).setAttribute('maxlength', String(parseInt(v.split('-')[1])));
             };
             if (v == 'email') _validators.push(Validators.email);
             if (v == 'decimal') _validators.push(CustomValidators.isDecimalValidator);

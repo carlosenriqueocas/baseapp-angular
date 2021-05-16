@@ -68,11 +68,13 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
     }
 
     private initValidators() {
-        this.ngModel.control.setValidators(CustomValidators.createListValidators(this.required, this.validations));
+        this.ngModel.control.setValidators(CustomValidators.createListValidators(this.required, this.validations, this.el));
+
+        this.render.addClass(this.el.nativeElement, 'form-control');
 
         (<HTMLElement>this.el.nativeElement).setAttribute('autocomplete', 'off');
         (<HTMLElement>this.el.nativeElement).setAttribute('type', 'text');
-        (<HTMLElement>this.el.nativeElement).setAttribute('class', 'form-control');
+        //(<HTMLElement>this.el.nativeElement).setAttribute('class', 'form-control');
     }
 
     @HostBinding('class.is-invalid') get onTouch() {

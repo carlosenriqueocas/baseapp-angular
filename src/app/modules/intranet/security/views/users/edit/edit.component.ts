@@ -6,7 +6,7 @@ import { DefaultPropertiesComponent } from '@shared_core/decorators/default-valu
 import { ToolService } from '@shared_core/services/core.service';
 import { Constants } from '@shared_models/constants.model';
 import { WidgetBaseComponent } from '@shared_utils/index';
-import { WidgetDropdown } from '@shared_widgets/dropdown/dropdown.component';
+import { WidgetDropdownComponent } from '@shared_widgets/dropdown/dropdown.component';
 
 import { FeatureModel } from '../../../models/feature.model';
 
@@ -25,7 +25,7 @@ export class FeatureEditComponent extends WidgetBaseComponent implements OnInit 
     objFeatureModel = new FeatureModel();
 
     @ViewChild(IntranetDialogWithFormComponent, { static: true }) dialogContent: IntranetDialogWithFormComponent;
-    @ViewChild(WidgetDropdown, { static: true }) select: WidgetDropdown<FeatureModel>;
+    @ViewChild(WidgetDropdownComponent, { static: true }) select: WidgetDropdownComponent<FeatureModel>;
 
     constructor(
         private toolsService: ToolService,
