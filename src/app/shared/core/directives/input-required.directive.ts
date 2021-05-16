@@ -92,7 +92,7 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
         if (this.ngModel.invalid) {
             this.render.addClass(target, 'is-invalid');
 
-            if (this.parent.classList.contains('input-group')) {
+            if (this.parent.classList.contains('input-icon')) {
                 this.render.addClass(this.superParent, 'validated');
             }
 
@@ -121,7 +121,7 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
         } else {
             this.render.removeClass(target, 'is-invalid');
 
-            if (this.parent.classList.contains('input-group')) {
+            if (this.parent.classList.contains('input-icon')) {
                 this.render.removeClass(this.superParent, 'validated');
             }
         }
@@ -129,7 +129,7 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
 
     private configParentSuperParent() {
         this.parent = this.render.parentNode(this.el.nativeElement) as HTMLElement;
-        if (this.parent.classList.contains('input-group')) this.superParent = this.parent.parentElement;
+        if (this.parent.classList.contains('input-icon')) this.superParent = this.parent.parentElement;
     }
 
     private showCounterCharacteres() {
@@ -147,7 +147,7 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
 
         if (this.parent.classList.contains('form-group'))
             labelChild = this.parent.firstChild;
-        else if (this.parent.classList.contains('input-group'))
+        else if (this.parent.classList.contains('input-icon'))
             labelChild = this.superParent.firstChild;
 
         labelChild.textContent = labelChild.textContent.replace(':', '') + ' ';;
@@ -170,7 +170,7 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
         // const target = this.el.nativeElement as HTMLElement;
         if (this.parent.classList.contains('form-group'))
             this.parent.append(this.divErrors);
-        else if (this.parent.classList.contains('input-group')) {
+        else if (this.parent.classList.contains('input-icon')) {
             this.superParent.append(this.divErrors);
             this.render.addClass(this.superParent, 'validated');
         }

@@ -6,6 +6,7 @@ import { DefaultPropertiesComponent } from '@shared_core/decorators/default-valu
 import { ToolService } from '@shared_core/services/core.service';
 import { Constants } from '@shared_models/constants.model';
 import { WidgetBaseComponent } from '@shared_utils/index';
+import { WidgetDropdown } from '@shared_widgets/dropdown/dropdown.component';
 
 import { FeatureModel } from '../../../models/feature.model';
 
@@ -21,8 +22,10 @@ import { FeatureModel } from '../../../models/feature.model';
 
 export class FeatureEditComponent extends WidgetBaseComponent implements OnInit {
     obj: FeatureModel = new FeatureModel();
+    objFeatureModel = new FeatureModel();
 
     @ViewChild(IntranetDialogWithFormComponent, { static: true }) dialogContent: IntranetDialogWithFormComponent;
+    @ViewChild(WidgetDropdown, { static: true }) select: WidgetDropdown<FeatureModel>;
 
     constructor(
         private toolsService: ToolService,
@@ -33,6 +36,20 @@ export class FeatureEditComponent extends WidgetBaseComponent implements OnInit 
     }
 
     ngOnInit() {
+        this.select.setData([
+            new FeatureModel({ IdCatalog: "1", Name: "Opcion 1", Description: "Desc 1", }),
+            new FeatureModel({ IdCatalog: "2", Name: "Opcion 2", Description: "Desc 2", }),
+            new FeatureModel({ IdCatalog: "3", Name: "Opcion 3", Description: "Desc 3", }),
+            new FeatureModel({ IdCatalog: "4", Name: "Opcion 4", Description: "Desc 4", }),
+            new FeatureModel({ IdCatalog: "5", Name: "Opcion 5", Description: "Desc 5", }),
+            new FeatureModel({ IdCatalog: "6", Name: "Opcion 6", Description: "Desc 6", }),
+            new FeatureModel({ IdCatalog: "7", Name: "Opcion 7", Description: "Desc 7", }),
+            new FeatureModel({ IdCatalog: "8", Name: "Opcion 8", Description: "Desc 8", }),
+        ]);
+    }
+
+    changeDropdown($event) {
+        console.log($event);
     }
 
     async save(): Promise<void> {

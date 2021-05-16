@@ -13,6 +13,7 @@ import { WidgetSelectWithPromiseComponent } from './select-promise/select-with-p
 import { WidgetSelectTreeComponent } from './select-tree/select-tree.component';
 import { WidgetSvgIconComponent } from './svg-icon/svg-icon.component';
 import { WidgetInputText } from './input-text/input-text.component';
+import { WidgetDropdown } from './dropdown/dropdown.component';
 
 @NgModule({
   imports: [
@@ -26,26 +27,33 @@ import { WidgetInputText } from './input-text/input-text.component';
     WidgetImgS3Component,
     WidgetInputTypeFileComponent,
     WidgetSelectGroupComponent,
-    WidgetSelectWithPromiseComponent,
+    //WidgetSelectWithPromiseComponent,
     WidgetSelectTreeComponent,
     WidgetSvgIconComponent,
 
-    WidgetInputText
+    WidgetInputText,
+    WidgetDropdown
   ],
   exports: [
     WidgetImgS3Component,
     WidgetInputTypeFileComponent,
     WidgetSelectGroupComponent,
-    WidgetSelectWithPromiseComponent,
+    //WidgetSelectWithPromiseComponent,
     WidgetSelectTreeComponent,
     WidgetSvgIconComponent,
 
-    WidgetInputText
+    WidgetInputText,
+    WidgetDropdown
   ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => WidgetInputText),
+      multi: true
+    },
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => WidgetDropdown),
       multi: true
     }
   ]
