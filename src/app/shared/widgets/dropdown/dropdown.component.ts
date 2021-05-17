@@ -3,6 +3,8 @@ import { Component, DoCheck, ElementRef, Input, OnInit, Optional, Self, ViewChil
 import { ControlValueAccessor, NgControl, NgModel } from '@angular/forms';
 
 import { CustomValidators } from '@shared_core/directives/validators/ngmodel.validator';
+
+import { WidgetBaseComponent } from '@shared_models/components/widget-base-component.model';
 import { Constants } from '@shared_models/constants.model';
 import { ResponseMessage } from '@shared_models/response.model';
 
@@ -13,7 +15,7 @@ import * as objectPath from 'object-path';
     templateUrl: './dropdown.component.html'
 })
 
-export class WidgetDropdownComponent<T> implements ControlValueAccessor, OnInit, AfterViewChecked, DoCheck {
+export class WidgetDropdownComponent<T> extends WidgetBaseComponent implements ControlValueAccessor, OnInit, AfterViewChecked, DoCheck {
 
     _value: T = null;
 
@@ -26,12 +28,8 @@ export class WidgetDropdownComponent<T> implements ControlValueAccessor, OnInit,
     width = 0;
 
     private promise: Promise<ResponseMessage<T[]>>;
-    private _constructor: new (value: Partial<T>) => T;
+    //private _constructor: new (value: Partial<T>) => T;
 
-    @Input() required: boolean = true;
-    @Input() validations: string[] = [];
-    @Input() label: string = 'label';
-    @Input() name: string = 'name';
     @Input() showNone: boolean = true;
     @Input() textNone: string = 'Ninguno';
     @Input() editable: boolean = true;
@@ -40,7 +38,6 @@ export class WidgetDropdownComponent<T> implements ControlValueAccessor, OnInit,
 
     @Output() change: EventEmitter<T> = new EventEmitter<T>();
 
-    @ViewChild("inputNgModel") inputNgModel: NgModel;
     @ViewChild('containerInput', { static: true }) containerInput: ElementRef;
 
     get isNone() {
@@ -57,11 +54,21 @@ export class WidgetDropdownComponent<T> implements ControlValueAccessor, OnInit,
         //@Optional() @Self() public validators: Array<Validator | ValidatorFn>,
         @Optional() @Self() public ngControl: NgControl
     ) {
+        super();
         this.ngControl.valueAccessor = this;
         this.ngControl.control.setValidators(CustomValidators.createListValidators(this.required, this.validations));
     }
 
     ngOnInit() {
+    }
+
+    writeValue(value: T) {
+        this._value = value;
+        this.text = this.getName(value);
+
+        if (value && !value[this.keyId]) {
+            this.onChange(null);
+        }
     }
 
     ngAfterViewChecked() {
@@ -134,27 +141,7 @@ export class WidgetDropdownComponent<T> implements ControlValueAccessor, OnInit,
         else this.isOpen = false;
     }
 
-    writeValue(value: T) {
-        this._value = value;
-        this.text = this.getName(value);
-
-        if (value && !value[this.keyId]) {
-            this.onChange(null);
-        }
-    }
-
-    registerOnChange(fn: any) {
-        this.onChange = fn;
-    }
-
-    registerOnTouched(fn: any) {
-        this.onTouch = fn;
-    }
-
     getName(item: T): string {
         return this.keyName.split('|').map(s => (<string>objectPath.get(item, s))).join(' | ');
     }
-
-    private onChange: any = () => { }
-    private onTouch: any = () => { }
 }
