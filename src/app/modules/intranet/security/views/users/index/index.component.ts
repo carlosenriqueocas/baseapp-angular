@@ -12,7 +12,8 @@ import { FeatureEditComponent } from '../edit/edit.component';
 @DefaultPropertiesComponent({
     title: 'Usuarios',
     description: 'Permite un CRUD de usuarios',
-    icon: 'users'
+    icon: 'users',
+    filterColumns: ['Name', 'Description']
 })
 @Component({
     selector: 'intranet-security-users',
@@ -21,7 +22,6 @@ import { FeatureEditComponent } from '../edit/edit.component';
 
 export class SecurityUsersComponent extends BaseComponent implements OnInit {
     tableColumns = ['check', 'name', 'description', 'acciones'];
-    filterColumns = ['Name', 'Description'];
 
     @ViewChild(IntranetContentWithTableComponent, { static: true }) content: IntranetContentWithTableComponent<FeatureModel>;
 

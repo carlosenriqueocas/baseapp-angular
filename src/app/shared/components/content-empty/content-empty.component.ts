@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ConfigComponent } from '../../models/components/config-table-modal.model';
 
 @Component({
     selector: 'content-empty',
@@ -8,8 +9,6 @@ import { Component, Input } from '@angular/core';
 export class IntranetContentEmptyComponent {
     loading = false;
 
-    @Input() titulo: string = 'Titulo';
-    @Input() descripcion: string = 'Descripción';
-    @Input() icon: string = 'check';
+    @Input() configComponent: ConfigComponent = new ConfigComponent();
 
 }

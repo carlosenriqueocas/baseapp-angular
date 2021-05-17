@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 import { TableWrapperComponent } from '@shared_models/components/table-wrapper-component.model';
 import { ResponseMessage } from '@shared_models/response.model';
 import { Constants } from '@shared_models/constants.model';
+import { ConfigComponent } from '@shared_models/components/config-table-modal.model';
+
 import { ToolService } from '@shared_core/services/core.service';
 
 import * as objectPath from 'object-path';
@@ -23,10 +25,7 @@ export class IntranetContentWithTableComponent<T> extends TableWrapperComponent 
 
     selection = new SelectionModel<T>(true, []);
 
-    @Input() titulo: string = 'Titulo';
-    @Input() descripcion: string = 'Descripción';
-    @Input() icon: string = 'check';
-    @Input() filterColumns: string[] = [];
+    @Input() configComponent: ConfigComponent = new ConfigComponent();
     @Input() dataSource: MatTableDataSource<T> = new MatTableDataSource<T>();
     @Input() validatorRef: (item: T) => boolean = null;
 
@@ -93,11 +92,11 @@ export class IntranetContentWithTableComponent<T> extends TableWrapperComponent 
     }
 
     private setFilterPredicate() {
-        if (this.filterColumns.length > 0) {
+        if (this.configComponent.filterColumns.length > 0) {
             this.dataSource.filterPredicate = (data: T, filter: string): boolean => {
                 let search = filter.trim().toLowerCase();
                 let coincidences = 0;
-                this.filterColumns.forEach(c => {
+                this.configComponent.filterColumns.forEach(c => {
                     let attribute = String(objectPath.get(data, c.trim()))?.toLowerCase() || '';
                     coincidences = coincidences + (attribute.indexOf(search) != -1 ? 1 : 0);
                 });

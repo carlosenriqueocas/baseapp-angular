@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ConfigComponent } from '../../models/components/config-table-modal.model';
 
 @Component({
     selector: 'dialog-empty',
@@ -6,9 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 
 export class IntranetDialogEmptyComponent implements OnInit {
-    @Input() title = 'Titulo';
-    @Input() description = 'Descripción';
-    @Input() icon = 'check';
+
+    @Input() configComponent: ConfigComponent = new ConfigComponent();
     @Input() size = 'sm';
 
     @Output() closeDialog = new EventEmitter<any>();

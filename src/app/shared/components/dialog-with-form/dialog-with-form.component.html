@@ -1,10 +1,10 @@
 <div class="modal-content" [ngClass]="modalSize">
     <div class="modal-header">
         <span class="svg-icon svg-icon-primary svg-icon-2x mr-2">
-            <widget-svg-icon [icon]="icon"></widget-svg-icon>
+            <widget-svg-icon [icon]="configComponent.icon"></widget-svg-icon>
         </span>
-        <h5 class="modal-title">{{ title }}
-            <span class="text-muted ml-5 font-weight-bolder font-size-lg">{{ description }}
+        <h5 class="modal-title">{{ configComponent.title }}
+            <span class="text-muted ml-5 font-weight-bolder font-size-lg">{{ configComponent.description }}
             </span>
         </h5>
 

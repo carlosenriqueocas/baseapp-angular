@@ -1,5 +1,4 @@
-<dialog-with-form (closeDialog)="dialogRef.close($event)" [title]="title" [description]="description" [icon]="icon"
-    size="md">
+<dialog-with-form [configComponent]="configComponent" (closeDialog)="dialogRef.close($event)" size="md">
 
     <ng-container dialogForm>
         <div class="row">

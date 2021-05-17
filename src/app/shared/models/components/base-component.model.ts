@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
+import { ConfigComponent } from './config-table-modal.model';
 
 @Component({
     template: ''
 })
 export abstract class BaseComponent {
 
-    title = 'Default';
-    description = 'Default';
-    icon = 'check';
+    configComponent: ConfigComponent;
+
+    constructor() {
+        this.configComponent = new ConfigComponent();
+    }
 
     // abstract setData(data: T): T;
 

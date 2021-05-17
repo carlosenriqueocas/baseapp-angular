@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, ContentChildren, QueryList } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
+import { ConfigComponent } from '@shared_models/components/config-table-modal.model';
 
 @Component({
     selector: 'dialog-with-form',
@@ -11,15 +12,13 @@ export class IntranetDialogWithFormComponent implements OnInit, AfterViewInit {
     private inputsOther: NgModel[] = [];
     modalSize: string;
 
-    @Input() title = 'Titulo';
-    @Input() description = 'Descripción';
-    @Input() icon = 'check';
+    @Input() configComponent: ConfigComponent = new ConfigComponent();
     @Input() size = 'sm';
 
     @Output() closeDialog = new EventEmitter<any>();
+
     @ContentChildren(NgModel, { descendants: true }) private inputs: QueryList<NgModel>;
     @ViewChild('form') private form: NgForm;
-
 
     constructor() { }
 

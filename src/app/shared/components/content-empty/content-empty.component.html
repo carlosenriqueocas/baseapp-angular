@@ -4,11 +4,11 @@
             <div class="card-header">
                 <div class="card-title">
                     <span class="svg-icon svg-icon-primary svg-icon-3x mr-2">
-                        <widget-svg-icon [icon]="icon"></widget-svg-icon>
+                        <widget-svg-icon [icon]="configComponent.icon"></widget-svg-icon>
                     </span>
                     <h3 class="card-label">
-                        {{ titulo }}
-                        <small>{{ descripcion }}</small>
+                        {{ configComponent.title }}
+                        <small>{{ configComponent.description }}</small>
                     </h3>
                 </div>
                 <div class="card-toolbar">
@@ -22,7 +22,7 @@
             </div>
             <div class="card-footer">
                 <div class="float-right">
-                    <ng-content select="[buttons]" ></ng-content>
+                    <ng-content select="[buttons]"></ng-content>
                 </div>
             </div>
         </div>
