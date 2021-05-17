@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { IntranetDialogWithFormComponent } from '@shared_components/dialog-with-form/dialog-with-form.component';
 
-import { DefaultPropertiesComponent } from '@shared_core/decorators/default-values-component.decorator';
+import { ConfigPropertiesComponent } from '@shared_core/decorators/default-values-component.decorator';
 import { ToolService } from '@shared_core/services/core.service';
 
 import { BaseComponent } from '@shared_models/components/base-component.model';
@@ -13,7 +13,7 @@ import { WidgetDropdownComponent } from '@shared_widgets/dropdown/dropdown.compo
 
 import { FeatureModel } from '../../../models/feature.model';
 
-@DefaultPropertiesComponent({
+@ConfigPropertiesComponent({
     title: 'Caracteristicas',
     description: 'Descripcion',
     icon: 'money'

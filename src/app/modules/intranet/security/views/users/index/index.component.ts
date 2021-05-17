@@ -3,13 +3,13 @@ import { take } from 'rxjs/operators';
 
 import { BaseComponent } from '@shared_models/components/base-component.model';
 import { IntranetContentWithTableComponent } from '@shared_components/content-with-table/content-with-table.component';
-import { DefaultPropertiesComponent } from '@shared_core/decorators/default-values-component.decorator';
+import { ConfigPropertiesComponent } from '@shared_core/decorators/default-values-component.decorator';
 import { ToolService } from '@shared_core/services/core.service';
 
 import { FeatureModel } from '../../../models/feature.model';
 import { FeatureEditComponent } from '../edit/edit.component';
 
-@DefaultPropertiesComponent({
+@ConfigPropertiesComponent({
     title: 'Usuarios',
     description: 'Permite un CRUD de usuarios',
     icon: 'users',

@@ -1,5 +1,5 @@
 import { ConfigComponent } from '../../models/components/config-table-modal.model';
-export function DefaultPropertiesComponent(options?: {
+export function ConfigPropertiesComponent(options?: {
     title?: string,
     description?: string,
     icon?: string,
