@@ -14,11 +14,7 @@
                 <widget-dropdown label="Marcas" name="brand" [(ngModel)]="objFeatureModel"
                     (change)="changeDropdown($event)"></widget-dropdown>
 
-                <!-- <div class="form-group">
-                    <label>Descripción:</label>
-                    <textarea input-safe [validators]="['max-500']" name="description" [(ngModel)]="obj.Description"
-                        rows="5"></textarea>
-                </div> -->
+                <widget-input-textarea label="TextArea" name="textarea" [(ngModel)]="textarea"></widget-input-textarea>
 
             </div>
             <div class="col-lg-6">

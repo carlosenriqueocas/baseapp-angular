@@ -496,7 +496,7 @@ widget-img-s3-portal {
     }
     &.focus:not(.btn-text),
     &:focus:not(.btn-text),
-    &:hover:not(.btn-text):not(:disabled):not(.disabled){
+    &:hover:not(.btn-text):not(:disabled):not(.disabled) {
         color: #fff;
         background-color: #0bb7af;
         border-color: #0bb7af;
@@ -512,11 +512,11 @@ widget-img-s3-portal {
     }
     &.focus:not(.btn-text),
     &:focus:not(.btn-text),
-    &:hover:not(.btn-text):not(:disabled):not(.disabled){
+    &:hover:not(.btn-text):not(:disabled):not(.disabled) {
         color: #fff;
         background-color: #1bc5bd;
         border-color: transparent;
-        & i{
+        & i {
             color: #fff;
         }
     }
@@ -536,23 +536,21 @@ widget-img-s3-portal {
     }
 }
 
-.br-20{
-    border-radius:20px !important;
+.br-20 {
+    border-radius: 20px !important;
 }
 
-.icon-select{
+.icon-select {
     transition: all 0.2s;
 }
-.r180{
+.r180 {
     transform: rotate(180deg);
     transition: all 0.2s;
 }
 
-
 // .pagination.pagination-lg .page-item .page-link span ,
-.pagination.pagination-lg .page-item .page-link
-{
-   font-family: "gotham-bold";
+.pagination.pagination-lg .page-item .page-link {
+    font-family: "gotham-bold";
 }
 .pagination.pagination-lg .page-item:first-child .page-link {
     border-top-left-radius: 20px;
@@ -636,11 +634,10 @@ widget-img-s3-portal {
 .placeholder-light::placeholder {
     color: rgb(196, 196, 196);
     font-weight: 100;
-  }
-
+}
 
 /*********************/
-.ellipsis-text{
+.ellipsis-text {
     max-width: 100px;
     white-space: nowrap;
     overflow: hidden;
@@ -886,4 +883,11 @@ widget-img-s3-portal {
     &::-webkit-scrollbar-thumb:active {
         background: linear-gradient(left, #22add4, #1e98ba);
     }
+}
+
+.txtHint + div {
+    display: none;
+}
+.txtHint:focus + div {
+    display: block;
 }

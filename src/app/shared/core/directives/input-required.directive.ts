@@ -29,6 +29,7 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
 
         this.initUnsafeCharacters();
         this.configParentSuperParent();
+        this.createDivCounter();
     }
 
     initUnsafeCharacters() {
@@ -44,7 +45,6 @@ export class InputRequiredDirective implements OnInit, AfterViewInit, OnDestroy 
     ngAfterViewInit() {
         this.initValidators();
         this.createDivErrors();
-        this.createDivCounter();
 
         if (this.required) this.addAsterisk();
 

@@ -26,6 +26,7 @@ import { FeatureModel } from '../../../models/feature.model';
 export class FeatureEditComponent extends BaseComponent implements OnInit {
     obj: FeatureModel = new FeatureModel();
     objFeatureModel: FeatureModel = null;
+    textarea = '';
 
     @ViewChild(IntranetDialogWithFormComponent, { static: true }) dialogContent: IntranetDialogWithFormComponent;
     @ViewChild(WidgetDropdownComponent, { static: true }) select: WidgetDropdownComponent<FeatureModel>;
