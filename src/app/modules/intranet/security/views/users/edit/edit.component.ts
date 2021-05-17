@@ -2,10 +2,13 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { IntranetDialogWithFormComponent } from '@shared_components/dialog-with-form/dialog-with-form.component';
+
 import { DefaultPropertiesComponent } from '@shared_core/decorators/default-values-component.decorator';
 import { ToolService } from '@shared_core/services/core.service';
+
+import { BaseComponent } from '@shared_models/components/base-component.model';
 import { Constants } from '@shared_models/constants.model';
-import { BaseComponent } from '@shared_utils/index';
+
 import { WidgetDropdownComponent } from '@shared_widgets/dropdown/dropdown.component';
 
 import { FeatureModel } from '../../../models/feature.model';

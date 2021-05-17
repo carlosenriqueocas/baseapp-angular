@@ -1,9 +1,4 @@
-import { AfterContentInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-
-import { TableWrapperUtil } from '../../utils';
-
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'content-empty',

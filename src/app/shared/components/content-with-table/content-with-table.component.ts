@@ -1,14 +1,13 @@
 import { AfterContentInit, Component, Input, OnInit, Output, ViewChild, EventEmitter, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
-import { LocalStorageHelper, TableWrapperUtil } from '../../utils';
-
 import { SelectionModel } from '@angular/cdk/collections';
 import { Subscription } from 'rxjs';
-import { ResponseMessage } from '../../models/response.model';
-import { ToolService } from '../../core/services/core.service';
-import { Constants } from '../../models/constants.model';
+
+import { TableWrapperComponent } from '@shared_models/components/table-wrapper-component.model';
+import { ResponseMessage } from '@shared_models/response.model';
+import { Constants } from '@shared_models/constants.model';
+import { ToolService } from '@shared_core/services/core.service';
 
 import * as objectPath from 'object-path';
 
@@ -19,7 +18,7 @@ type PromiseMultipleDeleteType = (CatalogIds: string[]) => Promise<ResponseMessa
     templateUrl: './content-with-table.component.html'
 })
 
-export class IntranetContentWithTableComponent<T> extends TableWrapperUtil implements OnInit, AfterContentInit, OnDestroy {
+export class IntranetContentWithTableComponent<T> extends TableWrapperComponent implements OnInit, AfterContentInit, OnDestroy {
     loading = false;
 
     selection = new SelectionModel<T>(true, []);
