@@ -15,7 +15,7 @@
 </div>
 
 <ng-template #options cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen"
-    [cdkConnectedOverlayScrollStrategy]="strategy.close()" (overlayOutsideClick)="outsideclick($event)"
+    [cdkConnectedOverlayScrollStrategy]="strategy.close()" (overlayOutsideClick)="outsideClick($event)"
     (detach)="openOptions(false)">
     <div style="background-color: white; border-radius: 0.42rem; box-shadow: 0 0px 10px 0 rgb(82 63 105 / 25%);padding: 5px"
         [style.width.px]="width">

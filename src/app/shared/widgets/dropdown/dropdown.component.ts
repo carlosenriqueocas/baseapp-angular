@@ -17,7 +17,7 @@ import * as objectPath from 'object-path';
 
 export class WidgetDropdownComponent<T> extends WidgetBaseComponent implements ControlValueAccessor, OnInit, AfterViewChecked, DoCheck {
 
-    _value: T = null;
+    private _value: T = null;
 
     list: T[] = [];
     originalList: T[] = [];
@@ -136,7 +136,7 @@ export class WidgetDropdownComponent<T> extends WidgetBaseComponent implements C
         }
     }
 
-    outsideclick(event) {
+    outsideClick(event) {
         if (event.target == (this.containerInput.nativeElement as HTMLElement).firstChild) return;
         else this.isOpen = false;
     }
