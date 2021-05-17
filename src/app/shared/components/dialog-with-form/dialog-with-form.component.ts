@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, ContentChildren, QueryList } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
-import { ConfigComponent } from '@shared_models/components/config-table-modal.model';
+import { ConfigComponent } from '@shared_models/components/config-component.model';
 
 @Component({
     selector: 'dialog-with-form',

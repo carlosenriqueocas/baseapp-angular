@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ConfigComponent } from '../../models/components/config-table-modal.model';
+import { ConfigComponent } from '../../models/components/config-component.model';
 
 @Component({
     selector: 'dialog-empty',

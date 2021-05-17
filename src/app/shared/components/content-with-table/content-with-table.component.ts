@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 import { TableWrapperComponent } from '@shared_models/components/table-wrapper-component.model';
 import { ResponseMessage } from '@shared_models/response.model';
 import { Constants } from '@shared_models/constants.model';
-import { ConfigComponent } from '@shared_models/components/config-table-modal.model';
+import { ConfigComponent } from '@shared_models/components/config-component.model';
 
 import { ToolService } from '@shared_core/services/core.service';
 

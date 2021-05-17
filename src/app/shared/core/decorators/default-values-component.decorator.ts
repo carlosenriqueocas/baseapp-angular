@@ -1,4 +1,4 @@
-import { ConfigComponent } from '../../models/components/config-table-modal.model';
+import { ConfigComponent } from '../../models/components/config-component.model';
 export function ConfigPropertiesComponent(options?: {
     title?: string,
     description?: string,

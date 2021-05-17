@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ConfigComponent } from './config-table-modal.model';
+import { ConfigComponent } from './config-component.model';
 
 @Component({
     template: ''
