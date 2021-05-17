@@ -6,15 +6,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { CoreModule } from '../core/core.module';
 
-import { WidgetImgS3Component } from './img-s3/img-s3.component';
-import { WidgetInputTypeFileComponent } from './input-type-file/input-type-file.component';
-import { WidgetSelectGroupComponent } from './select-group/select-group.component';
-import { WidgetSelectTreeComponent } from './select-tree/select-tree.component';
+import { WidgetImgS3Component } from './widgets-old/img-s3/img-s3.component';
+import { WidgetInputTypeFileComponent } from './widgets-old/input-type-file/input-type-file.component';
+import { WidgetSelectGroupComponent } from './widgets-old/select-group/select-group.component';
+import { WidgetSelectTreeComponent } from './widgets-old/select-tree/select-tree.component';
 import { WidgetSvgIconComponent } from './svg-icon/svg-icon.component';
 
 import { WidgetInputTextComponent } from './input-text/input-text.component';
 import { WidgetDropdownComponent } from './dropdown/dropdown.component';
 import { WidgetInputTextAreaComponent } from './input-textarea/input-textarea.component';
+import { WidgetInputNumberComponent } from './input-number/input-number.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { WidgetInputTextAreaComponent } from './input-textarea/input-textarea.co
 
     WidgetInputTextComponent,
     WidgetDropdownComponent,
-    WidgetInputTextAreaComponent
+    WidgetInputTextAreaComponent,
+    WidgetInputNumberComponent
   ],
   exports: [
     WidgetImgS3Component,
@@ -44,7 +46,8 @@ import { WidgetInputTextAreaComponent } from './input-textarea/input-textarea.co
 
     WidgetInputTextComponent,
     WidgetDropdownComponent,
-    WidgetInputTextAreaComponent
+    WidgetInputTextAreaComponent,
+    WidgetInputNumberComponent
   ],
   providers: [
     {
@@ -60,6 +63,11 @@ import { WidgetInputTextAreaComponent } from './input-textarea/input-textarea.co
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => WidgetInputTextAreaComponent),
+      multi: true
+    },
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => WidgetInputNumberComponent),
       multi: true
     }
   ]

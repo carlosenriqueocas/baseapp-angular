@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { AmplifyHelper } from '../../utils/amplify.utils';
-import * as convertionUtils from "../../utils/types-convertion.utils";
+import { AmplifyHelper } from '../../../utils/amplify.utils';
+import * as convertionUtils from "../../../utils/types-convertion.utils";
 
 @Component({
     selector: 'widget-img-s3',

@@ -2,11 +2,11 @@ import { Component, Input, OnInit, Output, QueryList, AfterViewInit, ViewChild, 
 import { NgModel } from '@angular/forms';
 import { ScrollStrategyOptions } from '@angular/cdk/overlay';
 
-import { ResponseMessage } from '../../models/response.model';
-import { Constants } from '../../models/constants.model';
+import { ResponseMessage } from '../../../models/response.model';
+import { Constants } from '../../../models/constants.model';
 
 import * as objectPath from 'object-path';
-import { buildTreeLevel2 } from '../../utils/types-convertion.utils';
+import { buildTreeLevel2 } from '../../../utils/types-convertion.utils';
 @Component({
     selector: 'widget-select-tree',
     templateUrl: './select-tree.component.html'

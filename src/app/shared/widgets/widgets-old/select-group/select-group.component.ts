@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, QueryList, AfterViewInit, ViewChild, ViewChildren, EventEmitter, ChangeDetectorRef, ElementRef, AfterViewChecked } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { ScrollStrategyOptions } from '@angular/cdk/overlay';
-import { ListSelectGroupModel, SelectGroupModel } from '../../models/select-group.model';
+import { ListSelectGroupModel, SelectGroupModel } from '../../../models/select-group.model';
 
 import * as objectPath from 'object-path';
 

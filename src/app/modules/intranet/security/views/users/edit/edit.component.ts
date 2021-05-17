@@ -27,6 +27,7 @@ export class FeatureEditComponent extends BaseComponent implements OnInit {
     obj: FeatureModel = new FeatureModel();
     objFeatureModel: FeatureModel = null;
     textarea = '';
+    inputNumber = 0;
 
     @ViewChild(IntranetDialogWithFormComponent, { static: true }) dialogContent: IntranetDialogWithFormComponent;
     @ViewChild(WidgetDropdownComponent, { static: true }) select: WidgetDropdownComponent<FeatureModel>;
@@ -62,6 +63,10 @@ export class FeatureEditComponent extends BaseComponent implements OnInit {
         } else {
             this.toolsService.sweetAlert.show(Constants.STATUS.Warning, 'Complete todos los campos');
         }
+        console.log(this.obj);
+        console.log(this.objFeatureModel);
+        console.log(this.textarea);
+        console.log(this.inputNumber);
     }
 
     changeLogoFile(files: File[]) {

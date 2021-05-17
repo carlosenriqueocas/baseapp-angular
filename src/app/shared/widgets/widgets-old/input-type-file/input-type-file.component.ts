@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { getImageDimensions } from '../../utils';
-import { ToolService } from '../../core/services/core.service';
-import { Constants } from '../../models/constants.model';
+import { getImageDimensions } from '../../../utils';
+import { ToolService } from '../../../core/services/core.service';
+import { Constants } from '../../../models/constants.model';
 
 @Component({
     selector: 'widget-input-type-file',
