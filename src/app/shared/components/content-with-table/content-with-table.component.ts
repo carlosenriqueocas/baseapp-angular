@@ -1,8 +1,9 @@
-import { AfterContentInit, Component, Input, OnInit, Output, ViewChild, EventEmitter, OnDestroy } from '@angular/core';
+import { AfterContentInit, Component, Input, OnInit, Output, ViewChild, EventEmitter, OnDestroy, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Subscription } from 'rxjs';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { Subscription, Observable } from 'rxjs';
 
 import { TableWrapperComponent } from '@shared_models/components/table-wrapper-component.model';
 import { ResponseMessage } from '@shared_models/response.model';
@@ -24,6 +25,7 @@ export class IntranetContentWithTableComponent<T> extends TableWrapperComponent 
     loading = false;
 
     selection = new SelectionModel<T>(true, []);
+    columns: string[] = [];
 
     @Input() configComponent: ConfigComponent = new ConfigComponent();
     @Input() dataSource: MatTableDataSource<T> = new MatTableDataSource<T>();
@@ -36,14 +38,24 @@ export class IntranetContentWithTableComponent<T> extends TableWrapperComponent 
     private multipleDeletePromise: PromiseMultipleDeleteType;
     private messageAlertMultipleDelete = null;
 
-    private sub: Subscription;
+    private $layoutChanges: Observable<BreakpointState>;
+    private subs: Subscription[] = [];
 
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
     constructor(
-        private toolsService: ToolService
+        private toolsService: ToolService,
+        private breakpointerObserver: BreakpointObserver,
+        private cdr: ChangeDetectorRef
     ) {
         super();
+        this.$layoutChanges = this.breakpointerObserver.observe([
+            Breakpoints.XSmall,
+            Breakpoints.Small,
+            Breakpoints.Medium,
+            Breakpoints.Large,
+            Breakpoints.XLarge
+        ]);
     }
 
     ngAfterContentInit() {
@@ -51,13 +63,28 @@ export class IntranetContentWithTableComponent<T> extends TableWrapperComponent 
     }
 
     ngOnInit() {
-        //if(this.isOnlyUserAccess) this.userId  = LocalStorageHelper.getUserId();
-        this.sub = this.selection.changed.subscribe(response => {
+        this.columns = this.configComponent.columns;
+
+        let sub1 = this.selection.changed.subscribe(response => {
             let selected = response.source.selected.length;
             if (selected > 0) {
                 this.selected.emit(selected);
             }
         });
+
+        let sub2 = this.$layoutChanges.subscribe(result => {
+            if (result.matches) {
+                if ((result.breakpoints[Breakpoints.XSmall] || result.breakpoints[Breakpoints.Small]) && this.configComponent.smallTableColumns.length > 0)
+                    this.columns = this.configComponent.smallTableColumns;
+                else
+                    this.columns = this.configComponent.columns;
+                this.cdr.markForCheck();
+            }
+        });
+
+        this.subs = [];
+        this.subs.push(sub1);
+        this.subs.push(sub2);
     }
 
     setDataSource(_data: T[]) {
@@ -156,6 +183,8 @@ export class IntranetContentWithTableComponent<T> extends TableWrapperComponent 
     }
 
     ngOnDestroy() {
-        this.sub?.unsubscribe();
+        this.subs?.forEach(s => {
+            s?.unsubscribe();
+        });
     }
 }

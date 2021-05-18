@@ -24,6 +24,7 @@ import { IntranetTableWithDragAndDropComponent } from './table-with-drag-and-dro
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
     imports: [
@@ -40,6 +41,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
         NgbTooltipModule,
         DragDropModule,
         ScrollingModule,
+        LayoutModule,
 
         // SITEL
         WidgetsModule

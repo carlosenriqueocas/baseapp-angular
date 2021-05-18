@@ -13,6 +13,8 @@ import { FeatureEditComponent } from '../edit/edit.component';
     title: 'Usuarios',
     description: 'Permite un CRUD de usuarios',
     icon: 'users',
+    columns: ['check', 'name', 'description', 'acciones'],
+    smallTableColumns: ['name', 'acciones'],
     filterColumns: ['Name', 'Description']
 })
 @Component({
@@ -21,7 +23,6 @@ import { FeatureEditComponent } from '../edit/edit.component';
 })
 
 export class SecurityUsersComponent extends BaseComponent implements OnInit {
-    tableColumns = ['check', 'name', 'description', 'acciones'];
 
     @ViewChild(IntranetContentWithTableComponent, { static: true }) content: IntranetContentWithTableComponent<FeatureModel>;
 
