@@ -28,6 +28,8 @@ export class FeatureEditComponent extends BaseComponent implements OnInit {
     objFeatureModel: FeatureModel = null;
     textarea = '';
     inputNumber = 0;
+    datepicker = new Date();
+    minDate = new Date(2021, 4, 10);
 
     @ViewChild(IntranetDialogWithFormComponent, { static: true }) dialogContent: IntranetDialogWithFormComponent;
     @ViewChild(WidgetDropdownComponent, { static: true }) select: WidgetDropdownComponent<FeatureModel>;
@@ -67,6 +69,7 @@ export class FeatureEditComponent extends BaseComponent implements OnInit {
         console.log(this.objFeatureModel);
         console.log(this.textarea);
         console.log(this.inputNumber);
+        console.log(this.datepicker);
     }
 
     changeLogoFile(files: File[]) {
@@ -76,4 +79,8 @@ export class FeatureEditComponent extends BaseComponent implements OnInit {
         }
     }
 
+
+    changeDate(date: Date) {
+        console.log(date);
+    }
 }

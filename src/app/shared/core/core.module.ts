@@ -20,8 +20,6 @@ import { DragVerticalDirective } from './directives/drag-vertical.directive';
 import { DecimalFormatPipe } from './pipes/decimal-format.pipe';
 import { InputIdentityTypeDirective } from './directives/input-identity-type.directive';
 
-import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
-
 const MY_FORMATS = {
   parse: {
     dateInput: 'LL',
@@ -58,11 +56,6 @@ const MY_FORMATS = {
     ToolService,
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { autoFocus: false, hasBackdrop: true, disableClose: true, } },
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
-    },
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
   exports: [

@@ -7,15 +7,16 @@
                 <widget-input-text label="Nombre" name="name" [(ngModel)]="obj.Name">
                 </widget-input-text>
 
-                <widget-input-text label="Descripción" name="description" [(ngModel)]="obj.Description">
-                </widget-input-text>
+                <widget-input-textarea label="TextArea" name="textarea" [(ngModel)]="textarea"></widget-input-textarea>
 
                 <widget-dropdown label="Marcas" name="brand" [(ngModel)]="objFeatureModel"
                     (change)="changeDropdown($event)"></widget-dropdown>
 
-                <widget-input-textarea label="TextArea" name="textarea" [(ngModel)]="textarea"></widget-input-textarea>
-
                 <widget-input-number label="Numero" name="number" [(ngModel)]="inputNumber"></widget-input-number>
+
+                <widget-calendar label="Calendario" name="calendar" [min]="minDate" (dateChange)="changeDate($event)"
+                    [btnCancelApply]="true" [(ngModel)]="datepicker">
+                </widget-calendar>
 
             </div>
             <!-- <div class="col-lg-6">

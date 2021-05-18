@@ -16,6 +16,7 @@ import { WidgetInputTextComponent } from './input-text/input-text.component';
 import { WidgetDropdownComponent } from './dropdown/dropdown.component';
 import { WidgetInputTextAreaComponent } from './input-textarea/input-textarea.component';
 import { WidgetInputNumberComponent } from './input-number/input-number.component';
+import { WidgetCalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { WidgetInputNumberComponent } from './input-number/input-number.componen
     WidgetInputTextComponent,
     WidgetDropdownComponent,
     WidgetInputTextAreaComponent,
-    WidgetInputNumberComponent
+    WidgetInputNumberComponent,
+    WidgetCalendarComponent
   ],
   exports: [
     WidgetImgS3Component,
@@ -47,7 +49,8 @@ import { WidgetInputNumberComponent } from './input-number/input-number.componen
     WidgetInputTextComponent,
     WidgetDropdownComponent,
     WidgetInputTextAreaComponent,
-    WidgetInputNumberComponent
+    WidgetInputNumberComponent,
+    WidgetCalendarComponent
   ],
   providers: [
     {
